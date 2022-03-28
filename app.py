@@ -20,7 +20,7 @@ app = Flask(__name__)
 lineaccesstoken = 'F7p77Oy6+pQ7D3zh+dJv1hHWg2Fh2FmRnrRneZoz6OP1e1PFk/F0Wv0jYOAhx7hpF63nOuFCNnFaqavShreVny/b1g5+CAOksfaNSj6ES4ZTA20cXL/xUlWRDq+Oa2zW40IPhJ+qeEwhpOjBrG74KQdB04t89/1O/w1cDnyilFU='
 line_bot_api = LineBotApi(lineaccesstoken)
 
-station= pd.read_csv('location.csv')
+station= pd.read_excel('https://docs.google.com/spreadsheets/d/1ThgBrnKljGPJ22Vdm-BOUFtgMzVu4dqC/edit?usp=sharing&ouid=117971784376574664583&rtpof=true&sd=true')
 
 ####################### new ########################
 @app.route('/')
