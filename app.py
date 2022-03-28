@@ -5,7 +5,6 @@
 from flask import Flask, jsonify, render_template, request
 import json
 import numpy as np
-import pymongo
 import pandas as pd
 import geopy.distance as ps
 from linebot.models import (
@@ -15,18 +14,13 @@ from linebot.models.template import *
 from linebot import (
     LineBotApi, WebhookHandler
 )
-from pymongo import MongoClient
 
 app = Flask(__name__)
 
 lineaccesstoken = 'F7p77Oy6+pQ7D3zh+dJv1hHWg2Fh2FmRnrRneZoz6OP1e1PFk/F0Wv0jYOAhx7hpF63nOuFCNnFaqavShreVny/b1g5+CAOksfaNSj6ES4ZTA20cXL/xUlWRDq+Oa2zW40IPhJ+qeEwhpOjBrG74KQdB04t89/1O/w1cDnyilFU='
 line_bot_api = LineBotApi(lineaccesstoken)
 
-client = MongoClient("mongodb+srv://<username>:<password>@kst.tgtza.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
-db = client.KKUni
-collection = db.kst
-data = pd.DataFrame(list(collection.find()))
-
+station= pd.read_excel('Location.xlsx')
 
 ####################### new ########################
 @app.route('/')
