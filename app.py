@@ -5,7 +5,13 @@
 from flask import Flask, jsonify, render_template, request
 import json
 import numpy as np
+import pymongo
 import pandas as pd
+from pymongo import MongoClient
+client = MongoClient("mongodb+srv://<username>:<password>@kst.tgtza.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", server_api=ServerApi('1'))
+db = client.KST
+collection = db.station
+station = pd.DataFrame(list(collection.find()))
 import geopy.distance as ps
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,TemplateSendMessage,ImageSendMessage, StickerSendMessage, AudioSendMessage
@@ -19,8 +25,6 @@ app = Flask(__name__)
 
 lineaccesstoken = 'F7p77Oy6+pQ7D3zh+dJv1hHWg2Fh2FmRnrRneZoz6OP1e1PFk/F0Wv0jYOAhx7hpF63nOuFCNnFaqavShreVny/b1g5+CAOksfaNSj6ES4ZTA20cXL/xUlWRDq+Oa2zW40IPhJ+qeEwhpOjBrG74KQdB04t89/1O/w1cDnyilFU='
 line_bot_api = LineBotApi(lineaccesstoken)
-
-station= pd.read_excel('Location.xlsx')
 
 ####################### new ########################
 @app.route('/')
